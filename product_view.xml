@@ -28,18 +28,18 @@
 		    </group>
 		    
 		    <group col="2">
-		    	<field name='product_component_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-		    	<field name='product_material_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-		    	<field name='product_unbuilt_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-		    	<field name='product_packed_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-		    	<field name='product_package_type' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-		    	<field name='product_collection_type' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_component_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_material_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_unbuilt_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_packed_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_package_type12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_collection_type12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
 		    </group>
 	    </group>
 	    <group>
-	    	<field name='product_finishing' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-	    	<field name='product_customer_description' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-	    	<field name='product_wood_description' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_finishing12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_customer_description12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_wood_description12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
 	    </group>
 
 
