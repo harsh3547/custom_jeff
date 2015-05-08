@@ -37,6 +37,7 @@ class product_template(osv.osv):
             'product_finishing12':fields.text('Finishing'),
             'product_component_volume12':fields.float('Component volume (mm3)',help="Length x Larg x Height"),
             'product_material_volume12':fields.float('Material volume (mm3)',help="Volume sum of all sub-component material vol"),
+            'product_classic_volume12':fields.float('Classic Volume',help="L*l*H"),
             'product_unbuilt_volume12':fields.float('Unbuilt Volume (mm3)',help="Volume of the disassemble furniture, ready to be packed"),
             'product_packed_volume12':fields.float('Packed Volume (mm3)',help="Volume of the packed furniture"),
             'product_package_type12':fields.many2one('product.package.type','Package Type'),
