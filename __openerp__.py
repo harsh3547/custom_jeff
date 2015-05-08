@@ -15,6 +15,11 @@
         'mrp_view.xml',
 #        'stock_view.xml',
         'product_data.xml',
+        ###########patches by harsh jain #################
+        'ir.model.access.csv',
+        'product_package_view.xml',
+        'product_collection_view.xml',
+        #################################################
 
 
     ],

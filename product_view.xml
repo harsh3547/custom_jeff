@@ -12,20 +12,37 @@
 	    <group>
 		<field name='product_category'/>
 	    </group>
-	    <group>
-		<field name='product_length' attrs="{'invisible': [('product_category','=','volume')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
-		<field name='product_diameter' attrs="{'invisible': [('product_category','!=','cylindrical')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
-		<field name='product_larg' attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
-		<field name='product_height' attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
-		<field name='product_weight' on_change="product_weight_change(product_category,product_weight,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
-		<field name="product_cylindrical_density" attrs="{'invisible': [('product_category','!=','cylindrical')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
-		<field name="product_cylindrical_volume" attrs="{'invisible': [('product_category','!=','cylindrical')]}"/>
-		<field name="product_cubic_density" attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
-		<field name="product_cubic_volume" attrs="{'invisible': [('product_category','!=','cubic')]}"/>
-		<field name="product_volume_density" attrs="{'invisible': [('product_category','!=','volume')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
-		<field name="product_volume_volume" attrs="{'invisible': [('product_category','!=','volume')]}" on_change="product_volumn_change(product_category,product_volume_volume,product_weight)"/>
-				
+	    <group col="4">
+		    <group col="2">
+			<field name='product_length' attrs="{'invisible': [('product_category','=','volume')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
+			<field name='product_diameter' attrs="{'invisible': [('product_category','!=','cylindrical')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
+			<field name='product_larg' attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
+			<field name='product_height' attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_qty_change(product_category,product_height,product_larg,product_diameter,product_length)"/>
+			<field name='product_weight' on_change="product_weight_change(product_category,product_weight,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
+			<field name="product_cylindrical_density" attrs="{'invisible': [('product_category','!=','cylindrical')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
+			<field name="product_cylindrical_volume" attrs="{'invisible': [('product_category','!=','cylindrical')]}"/>
+			<field name="product_cubic_density" attrs="{'invisible': [('product_category','!=','cubic')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
+			<field name="product_cubic_volume" attrs="{'invisible': [('product_category','!=','cubic')]}"/>
+			<field name="product_volume_density" attrs="{'invisible': [('product_category','!=','volume')]}" on_change="product_density_change(product_category,product_cylindrical_density,product_cubic_density,product_volume_density,product_cylindrical_volume,product_cubic_volume,product_volume_volume)"/>
+			<field name="product_volume_volume" attrs="{'invisible': [('product_category','!=','volume')]}" on_change="product_volumn_change(product_category,product_volume_volume,product_weight)"/>
+		    </group>
+		    
+		    <group col="2">
+		    	<field name='product_component_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_material_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_unbuilt_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_packed_volume' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_package_type' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    	<field name='product_collection_type' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+		    </group>
 	    </group>
+	    <group>
+	    	<field name='product_finishing' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_customer_description' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_wood_description' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    </group>
+
+
 	  </page>
 	  </xpath>
 	</field>

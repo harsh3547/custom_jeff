@@ -6,7 +6,17 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+##############""" patches by harsh jain"""####################start
 
+class product_package_type(osv.osv):
+    _name='product.package.type'
+    _columns={'name':fields.char('Package Type')}
+
+class product_collection_type(osv.osv):
+    _name='product.collection.type'
+    _columns={'name':fields.char('Collection Type')}
+
+################################################################################
 
 class product_template(osv.osv):
     _inherit = 'product.template'
@@ -24,10 +34,21 @@ class product_template(osv.osv):
             'product_cylindrical_density':fields.float('Density(Kg/m3)'),
             'product_cubic_density':fields.float('Density(Kg/m3)'),
             'product_volume_density':fields.float('Density (Kg/Liter)'),
-            
             #'compute_selection':fields.selection([('compute_weight','Compute Based on Weight'),
             #                ('compute_density','Compute Based on Density')],'Compute Choice', required=True),
-
+            
+            ##############""" patches by harsh jain"""####################start
+             
+            'product_finishing':fields.text('Finishing'),
+            'product_component_volume':fields.float('Component volume (mm3)',help="Length x Larg x Height"),
+            'product_material_volume':fields.float('Material volume (mm3)',help="Volume sum of all sub-component material vol"),
+            'product_unbuilt_volume':fields.float('Unbuilt Volume (mm3)',help="Volume of the disassemble furniture, ready to be packed"),
+            'product_packed_volume':fields.float('Packed Volume (mm3)',help="Volume of the packed furniture"),
+            'product_package_type':fields.many2one('product.package.type','Package Type'),
+            'product_customer_description':fields.text('Customer Description'),
+            'product_collection_type':fields.many2one('product.collection.type','Collection'),
+            'product_wood_description':fields.text('Wood'),
+            ########""" patches by harsh jain"""####################end
             
     }
     _defaults = {
