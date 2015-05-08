@@ -34,11 +34,6 @@ class product_template(osv.osv):
             'product_cylindrical_density':fields.float('Density(Kg/m3)'),
             'product_cubic_density':fields.float('Density(Kg/m3)'),
             'product_volume_density':fields.float('Density (Kg/Liter)'),
-            #'compute_selection':fields.selection([('compute_weight','Compute Based on Weight'),
-            #                ('compute_density','Compute Based on Density')],'Compute Choice', required=True),
-            
-            ##############""" patches by harsh jain"""####################start
-             
             'product_finishing':fields.text('Finishing'),
             'product_component_volume':fields.float('Component volume (mm3)',help="Length x Larg x Height"),
             'product_material_volume':fields.float('Material volume (mm3)',help="Volume sum of all sub-component material vol"),
