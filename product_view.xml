@@ -28,7 +28,6 @@
 		    </group>
 		    
 		    <group col="2">
-		    	<field name='product_component_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
 		    	<field name='product_material_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic')]}" />
 		    	<field name='product_classic_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','!=',False)]}" />
 		    	<field name='product_unbuilt_volume12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
