@@ -21,6 +21,23 @@ class product_collection_type(osv.osv):
 class product_template(osv.osv):
     _inherit = 'product.template'
 
+    #####edited by harsh jain
+    
+    def _get_material_volume(self, cr, uid, ids, field_name, arg, context=None):
+        if context==None:context={}
+        res = dict.fromkeys(ids, False)
+        for i in self.browse(cr, uid, ids, context=context):
+            bom_id=self.pool.get('mrp.bom').search(cr,uid,[('product_tmpl_id','=',i.id)],context=context)
+            if bom_id:bom_id=bom_id[0]
+            bom_obj=self.pool.get('mrp.bom').browse(cr,uid,bom_id)
+            volume=0.0
+            for j in bom_obj.bom_line_ids:
+                volume += j.product_id.product_tmpl_id.product_cubic_volume
+            res[i.id]=volume
+        return res
+    
+    #####edited by harsh jain
+    
     _columns = {
             'product_category':fields.selection([('cylindrical','Cylindrical'),('cubic','Cubic'),('volume','Volume')],'Product Category'),
             'product_length':fields.float('Length (mm)'),
@@ -29,22 +46,21 @@ class product_template(osv.osv):
             'product_height':fields.float('Height(mm)'),
             'product_weight':fields.float('Weight(Kg)'),
             'product_cylindrical_volume': fields.float('Volume(m3)',digits=(12, 9)),
-            'product_cubic_volume': fields.float('Volume(m3)',digits=(12, 9)),
+            'product_cubic_volume': fields.float('Component Volume(m3)',digits=(12, 9)),#####edited by harsh jain #########
             'product_volume_volume': fields.float('Volume(Liter)',digits=(12, 9)),
             'product_cylindrical_density':fields.float('Density(Kg/m3)'),
             'product_cubic_density':fields.float('Density(Kg/m3)'),
             'product_volume_density':fields.float('Density (Kg/Liter)'),
             'product_finishing12':fields.text('Finishing'),
-            'product_component_volume12':fields.float('Component volume (mm3)',help="Length x Larg x Height"),
-            'product_material_volume12':fields.float('Material volume (mm3)',help="Volume sum of all sub-component material vol"),
+            'product_material_volume12':fields.function(_get_material_volume,type='float',digits=(12, 9),string='Material volume (m3)',help="Volume sum of all sub-component vol"),
             'product_classic_volume12':fields.float('Classic Volume',help="L*l*H"),
-            'product_unbuilt_volume12':fields.float('Unbuilt Volume (mm3)',help="Volume of the disassemble furniture, ready to be packed"),
-            'product_packed_volume12':fields.float('Packed Volume (mm3)',help="Volume of the packed furniture"),
+            'product_unbuilt_volume12':fields.float('Unbuilt Volume (m3)',help="Volume of the disassemble furniture, ready to be packed"),
+            'product_packed_volume12':fields.float('Packed Volume (m3)',help="Volume of the packed furniture"),
             'product_package_type12':fields.many2one('product.package.type','Package Type'),
             'product_customer_description12':fields.text('Customer Description'),
             'product_collection_type12':fields.many2one('product.collection.type','Collection'),
             'product_wood_description12':fields.text('Wood'),
-            ########""" patches by harsh jain"""####################end
+            ########""" patches by harsh jain"""
             
     }
     _defaults = {
@@ -243,7 +259,7 @@ class product_template(osv.osv):
                 elif product_category == 'cubic':
                     volume = (product_length * product_height * product_larg)/1000000000.0
                     #volume = (product_length * (product_diameter/2.0) * float(22/7))/1000000000.0
-                    return {'value': {'product_cubic_volume': volume}}
+                    return {'value': {'product_cubic_volume': volume,'product_classic_volume12':volume}}
         except ZeroDivisionError:
             raise osv.except_osv(_('No could not divide by zwero'), _('Pls Check The values of Product Mesurement Tab'))
         return True
