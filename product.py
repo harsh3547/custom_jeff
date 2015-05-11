@@ -15,6 +15,14 @@ class product_package_type(osv.osv):
 class product_collection_type(osv.osv):
     _name='product.collection.type'
     _columns={'name':fields.char('Collection Type')}
+    
+class product_customer_description(osv.osv):
+    _name='product.customer.description'
+    _columns={'customer':fields.many2one('res.partner',String='Customer'),
+              'description':fields.text(string='Description'),
+              'product_template_rel':fields.many2one('product.template')
+              }
+    
 
 ################################################################################
 
@@ -57,7 +65,7 @@ class product_template(osv.osv):
             'product_unbuilt_volume12':fields.float('Unbuilt Volume (m3)',help="Volume of the disassemble furniture, ready to be packed"),
             'product_packed_volume12':fields.float('Packed Volume (m3)',help="Volume of the packed furniture"),
             'product_package_type12':fields.many2one('product.package.type','Package Type'),
-            'product_customer_description12':fields.text('Customer Description'),
+            'product_customer_description12':fields.one2many('product.customer.description','product_template_rel','Customer Description'),
             'product_collection_type12':fields.many2one('product.collection.type','Collection'),
             'product_wood_description12':fields.text('Wood'),
             ########""" patches by harsh jain"""

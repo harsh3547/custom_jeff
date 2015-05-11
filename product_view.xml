@@ -36,10 +36,21 @@
 		    	<field name='product_collection_type12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
 		    </group>
 	    </group>
+   		<field name='product_customer_description12' attrs="{'invisible': [('sale_ok','=',False)]}">
+   			<form string="Customer Description">
+   				<group>
+   				<field name='customer' string='Customer'/>
+   				<field name='description'/>
+   				</group>
+   			</form>
+   			<tree string="Customer Description" editable="bottom" >
+   				<field name='customer' string='Customer'/>
+   				<field name='description'/>
+   			</tree>
+   		</field>
 	    <group>
-	    	<field name='product_finishing12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-	    	<field name='product_customer_description12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
-	    	<field name='product_wood_description12' attrs="{'invisible': ['|',('product_category','!=','cubic'),('sale_ok','=',False)]}" />
+	    	<field name='product_finishing12' attrs="{'invisible': [('sale_ok','=',False)]}" />
+	    	<field name='product_wood_description12' attrs="{'invisible': [('sale_ok','=',False)]}" />
 	    </group>
 
 
